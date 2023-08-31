@@ -171,9 +171,9 @@ x+=3
 const sort_input = document.getElementById('sort-input');
 sort_input.addEventListener('change',()=>{
   if(sort_input.value === 'Sort By view'){
-    if(x > 4){
+ 
       x = y;
-    }
+    
     sortByData(cat_id)
     console.log(x)
   }
