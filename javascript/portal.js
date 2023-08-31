@@ -131,6 +131,7 @@ slice.forEach(data=>{
  
 })  
 loadingBottom.classList.add('hidden')
+
 const card = card_container.querySelectorAll('.card');
 if(categoriesItem.length === card.length){
   loadMoreButtonDiv.classList.add('hidden')
@@ -139,19 +140,25 @@ if(categoriesItem.length === card.length){
 else{
   loadMoreButtonDiv.classList.remove('hidden')
 }
-x = 4;
+const sort_input = document.getElementById('sort-input');
+if(sort_input.value !== 'Sort By view'){
+  x = 4;
+}
 
 }
+let y;
 loadMoreButton.addEventListener('click',()=>{
   x += 3;
- 
+ y = x;
   loadMoreButtonDiv.classList.add('hidden')
   loadingBottom.classList.remove('hidden')
 x+=3
   setTimeout(()=>{
     if(sort_input.value === 'Sort By view'){
+      
       sortByData(cat_id)
     }
+    
     else{
   
     getData(cat_id)}
@@ -164,7 +171,11 @@ x+=3
 const sort_input = document.getElementById('sort-input');
 sort_input.addEventListener('change',()=>{
   if(sort_input.value === 'Sort By view'){
+    if(x > 4){
+      x = y;
+    }
     sortByData(cat_id)
+    console.log(x)
   }
 })
 
